@@ -7,7 +7,7 @@ gulp.task("default",["watch"]);
 gulp.task("build",["jade","sass"]);
 
 gulp.task("jade",function(){
-   return gulp.src(["./frontend/assets/tmpl/**/*.jade","!./frontend/assets/tmpl/**/_*.jade"])
+   gulp.src(["./frontend/assets/tmpl/**/*.jade","!./frontend/assets/tmpl/**/_*.jade"])
        .pipe(jade({
           pretty: true
        }))
