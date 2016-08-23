@@ -1,4 +1,5 @@
 var gulp = require("gulp");
+var plumber = require("gulp-plumber");
 var jade = require("gulp-jade");
 var sass = require("gulp-sass");
 var browser = require("browser-sync")
@@ -8,6 +9,7 @@ gulp.task("build",["jade","sass"]);
 
 gulp.task("jade",function(){
    gulp.src(["./frontend/assets/tmpl/**/*.jade","!./frontend/assets/tmpl/**/_*.jade"])
+       .pipe(plumber())
        .pipe(jade({
           pretty: true
        }))
@@ -17,6 +19,7 @@ gulp.task("jade",function(){
 
 gulp.task("sass",function(){
    gulp.src("./frontend/assets/sass/**/*.scss")
+       .pipe(plumber())
        .pipe(sass())
        .pipe(gulp.dest("./public/css"))
 });
